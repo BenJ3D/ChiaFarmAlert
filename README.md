@@ -4,6 +4,8 @@
 
 A Python 3 script to monitor your Chia farm and receive alerts via email when there are changes in the number of plots or wallet balance.
 
+The script will also run in the background and update the information every 10 minutes. If there are changes in the number of plots or wallet balance, an email will be sent to the recipient email address.
+
 <h2>Description</h2>
 This script uses the Chia command-line interface to obtain the following information about your Chia farm:
 
@@ -14,12 +16,9 @@ The script also provides a graphical user interface (GUI) with the following but
 
 `Refresh`: This button updates the GUI with the latest farm summary information.
 
-`Send Email`: This button sends an email to the recipient email address with the current farm summary information.
+`Send Email`: This button force sends an email to the recipient email address with the current farm summary information.
 
 `Close`: This button closes the window and stops the script from running.
-
-The script will also run in the background and update the information every 10 minutes. If there are changes in the number of plots or wallet balance, an email will be sent to the recipient email address.
-
 
 Dependencies
 ```Python 3```
