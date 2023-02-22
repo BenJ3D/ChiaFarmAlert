@@ -4,6 +4,7 @@ A Python 3 script to monitor your Chia farm and receive alerts via email when th
 
 The script will also run in the background and update the information every 10 minutes. If there are changes in the number of plots or wallet balance, an email will be sent to the recipient email address.
 
+/!\ As it is, it only works on Windows, I don't think there are many modifications to do for a Linux version.
 
 ![image](https://user-images.githubusercontent.com/49345674/220518241-df778eb5-147d-4e5f-9987-6be632fe4d9c.png) ![image](https://user-images.githubusercontent.com/49345674/220518418-7282bfd5-86a2-42af-a778-56d9e01eeccb.png)
 
