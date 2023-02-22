@@ -7,8 +7,6 @@ The script will also run in the background and update the information every 10 m
 
 ![image](https://user-images.githubusercontent.com/49345674/220518241-df778eb5-147d-4e5f-9987-6be632fe4d9c.png) ![image](https://user-images.githubusercontent.com/49345674/220518418-7282bfd5-86a2-42af-a778-56d9e01eeccb.png)
 
-Scripting with ChatGPT
-
 <h2>Description</h2>
 This script uses the Chia command-line interface to obtain the following information about your Chia farm:
 
