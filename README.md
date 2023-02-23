@@ -44,7 +44,7 @@ You can install the remaining dependencies using pip:
 <h2>Usage</h2>
 1. Clone the repository:
 
-```git clone https://github.com/<your-username>/chia-farm-alert.git```
+```git clone git@github.com:BenJ3D/ChiaFarmAlert.git```
 
 2. Open the file `chia-farm-alert.py` in your favorite text editor.
 3. Update the email information at the beginning of the script with your own email, password, and recipient email address.
