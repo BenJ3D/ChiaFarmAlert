@@ -104,5 +104,5 @@ You can click the "Refresh" button to update the information, the "Send Email" b
 
 The script will also run in the background and update the information every 10 minutes. If there are changes in the number of plots or wallet balance, an email will be sent to the recipient email address.
 
-Disclaimer
+<h3>Disclaimer</h3>
 This script is provided as-is, and the author is not responsible for any damages or losses that may occur as a result of using this script. The script should be used at your own risk.
