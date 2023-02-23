@@ -55,11 +55,16 @@ receiver_email = "recipient-email@gmail.com"
 ```
 
 5. Configure your Gmail account to allow SMTP access: (Your gmail address must have the two-step validation active)
+
 Go to your Google account settings and click on "Security" in the left-hand menu.
 Scroll down to "Less secure app access" and turn it on.
+
 Generate an app password by going to "Security" > "App passwords" and selecting "Mail" and your device.
+
 Use the generated app password in the sender_password variable in the script.
-Run the script:
+
+
+<h2>Run the script:</h2>
 
 ```python3 chia-farm-alert.py```
 
