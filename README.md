@@ -105,4 +105,11 @@ You can click the "Refresh" button to update the information, the "Send Email" b
 The script will also run in the background and update the information every 10 minutes. If there are changes in the number of plots or wallet balance, an email will be sent to the recipient email address.
 
 <h3>Disclaimer</h3>
+For the moment, the script is rudimentary:
+
+It does not work if Chia is not running or is no longer running // I will soon add error handling to send an email with the error
+The GUI interface is very slow.
+It has happened to me that the program freezes, but this does not seem to occur when run as an administrator.
+When I have time, I will create a proper program with a user-friendly interface, compatible with both Linux and Windows.
+
 This script is provided as-is, and the author is not responsible for any damages or losses that may occur as a result of using this script. The script should be used at your own risk.
