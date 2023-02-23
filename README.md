@@ -36,14 +36,47 @@ Dependencies
 ```smtplib```
 ```email.mime.text```
 ```schedule```
+
+<h2>Gmail configuration</h2>
+
+I strongly advise creating a new email address (Gmail is not mandatory, but you will need to modify the script accordingly to adapt the SMTP and port settings).
+
+Configure your Gmail account to allow SMTP access: (Your gmail address must have the two-step validation active)
+
+Go to your Google account settings and click on "Security" in the left-hand menu.
+Scroll down to "Less secure app access" and turn it on.
+
+Generate an app password by going to "Security" > "App passwords" and selecting "Mail" and your device.
+
+Use the generated app password in the sender_password variable in the script.
+
+<h2>Dependencies</h2>
 You can download and install Python 3 from the official website: https://www.python.org/downloads/
+
+https://www.dataquest.io/blog/install-pip-windows/  look that for install python and pip.
 
 Make sure to add Python to your PATH environment variable during the installation process.
 
 You can install the remaining dependencies using pip:
 
 ```pip install schedule```
-<h2>Usage</h2>
+
+
+<h2>Usage non-CLI</h2>
+
+1- Download the ZIP archive by clicking on the "code" dropdown menu at the top of the page.
+
+2- Extract the folder wherever you want.
+
+3- Open the ChiaFarmAlert.py file with a text editor (like VSCode, it looks nicer that way :)) and update the email information at the beginning of the script with your own email, password, and recipient email address.
+```
+sender_email = "your-email@gmail.com"
+sender_password = "your-email-password"
+receiver_email = "recipient-email@gmail.com"
+```
+4- Configure your Gmail address that you will have created for this purpose (see below, you will also need to generate an application password from your Google account associated with this Gmail address).
+
+<h2>Usage CLI</h2>
 1. Clone the repository:
 
 ```git clone git@github.com:BenJ3D/ChiaFarmAlert.git```
@@ -56,21 +89,18 @@ sender_password = "your-email-password"
 receiver_email = "recipient-email@gmail.com"
 ```
 
-5. Configure your Gmail account to allow SMTP access: (Your gmail address must have the two-step validation active)
-
-Go to your Google account settings and click on "Security" in the left-hand menu.
-Scroll down to "Less secure app access" and turn it on.
-
-Generate an app password by going to "Security" > "App passwords" and selecting "Mail" and your device.
-
-Use the generated app password in the sender_password variable in the script.
-
-
 <h2>Run the script:</h2>
 
+In terminal :
 ```python3 chia-farm-alert.py```
 
-The script will open a window that shows the number of plots, wallet balance, and total Chia farmed. You can click the "Refresh" button to update the information, the "Send Email" button to send an email with the current information, and the "Close" button to close the window.
+Or Launch the script by double-clicking on it and selecting "Open with Python/Python 3.10".
+
+At startup, you should receive two emails indicating the number of plots and the wallet balance, which means everything is working correctly.
+
+The script will open a window that shows the number of plots, wallet balance, and total Chia farmed. 
+
+You can click the "Refresh" button to update the information, the "Send Email" button to send an email with the current information, and the "Close" button to close the window.
 
 The script will also run in the background and update the information every 10 minutes. If there are changes in the number of plots or wallet balance, an email will be sent to the recipient email address.
 
