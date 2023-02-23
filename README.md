@@ -21,7 +21,7 @@ This script uses the Chia command-line interface to obtain the following informa
 
 The script also provides a graphical user interface (GUI) with the following buttons:
 
-`Refresh`: This button updates the GUI with the latest farm summary information.
+`Refresh`: This button updates manually the GUI with the latest farm summary information.
 
 `Send Email`: This button force sends an email to the recipient email address with the current farm summary information.
 
