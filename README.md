@@ -42,7 +42,7 @@ Make sure to add Python to your PATH environment variable during the installatio
 
 You can install the remaining dependencies using pip:
 
-```pip install tkinter schedule```
+```pip install schedule```
 <h2>Usage</h2>
 1. Clone the repository:
 
