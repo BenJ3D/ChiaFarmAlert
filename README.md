@@ -94,7 +94,7 @@ receiver_email = "recipient-email@gmail.com"
 In terminal :
 ```python3 chia-farm-alert.py```
 
-Or Launch the script by double-clicking on it and selecting "Open with Python/Python 3.10".
+Or Launch the script by right-clicking on it and selecting "Open with Python 3.10".
 
 At startup, you should receive two emails indicating the number of plots and the wallet balance, which means everything is working correctly.
 
