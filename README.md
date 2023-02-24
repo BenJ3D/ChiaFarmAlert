@@ -1,5 +1,10 @@
 <h1>Chia Farm Alert</h1>
 
+UPDATE:
+1. Adding a parameter to set the delay between two updates
+2. Adding a parameter to define how often to send a report.
+
+
 A Python 3 script to monitor your Chia farm and receive alerts via email when there are changes in the number of plots or wallet balance.
 
 The script will also run in the background and update the information every 10 minutes. If there are changes in the number of plots or wallet balance, an email will be sent to the recipient email address.
@@ -74,6 +79,14 @@ sender_email = "your-email@gmail.com"
 sender_password = "your-email-password"
 receiver_email = "recipient-email@gmail.com"
 ```
+
+
+And if you want set delays :
+```
+send_a_control_email_every_n_hours = 24     # 0 for disable, sent summary mail to verify that everything is working correctly
+refresh_delay_in_minutes = 10               # The time in minutes when the script refreshes the Chia data   
+```
+
 4- Configure your Gmail address that you will have created for this purpose (see below, you will also need to generate an application password from your Google account associated with this Gmail address).
 
 <h2>Usage CLI</h2>
@@ -88,6 +101,14 @@ sender_email = "your-email@gmail.com"
 sender_password = "your-email-password"
 receiver_email = "recipient-email@gmail.com"
 ```
+
+And if you want set delays :
+```
+send_a_control_email_every_n_hours = 24     # 0 for disable, sent summary mail to verify that everything is working correctly
+refresh_delay_in_minutes = 10               # The time in minutes when the script refreshes the Chia data   
+```
+
+
 
 <h2>Run the script:</h2>
 
