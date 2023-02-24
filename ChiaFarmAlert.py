@@ -8,12 +8,17 @@ from tkinter import messagebox
 from tkinter import ttk
 import sys
 
-
-# Email information
-sender_email = "your-email@gmail.com"
-sender_password = "your-email-password"
-receiver_email = "recipient-email@gmail.com"
-
+#################################################################################################################################
+# Settings                                                                                                                      #
+send_a_control_email_every_n_hours = 24     # 0 for disable, sent summary mail to verify that everything is working correctly   #
+refresh_delay_in_minutes = 10               #The time in minutes when the script refreshes the Chia data                        #
+                                                                                                                                #
+# Email information                                                                                                             #
+sender_email = "your-email@gmail.com"                                                                                           #
+sender_password = "your-email-password"                                                                                         #
+receiver_email = "recipient-email@gmail.com"                                                                                    #
+                                                                                                                                #
+#################################################################################################################################
 # Function to send email
 def send_email(subject, message):
     msg = MIMEText(message, 'html')
@@ -43,17 +48,23 @@ def format_html_output(output):
 
     # Find Chia Wallet balance
     chia_wallet_balance = "N/A"
-    chia_wallet_output = subprocess.check_output("chia wallet show", shell=True).decode()
-    chia_wallet_lines = chia_wallet_output.split("\n")
-    for i in range(len(chia_wallet_lines)):
-        if "Chia Wallet:" in chia_wallet_lines[i]:
-            for j in range(i+1, len(chia_wallet_lines)):
-                if chia_wallet_lines[j].startswith("   -Total Balance:"):
-                    chia_wallet_balance = chia_wallet_lines[j].split(":")[1].strip()
-                    break
-                elif chia_wallet_lines[j].startswith("Pool wallet:"):
-                    break
-            break
+    try:
+         chia_wallet_output = subprocess.check_output("chia wallet show", shell=True).decode()
+         chia_wallet_lines = chia_wallet_output.split("\n")
+         for i in range(len(chia_wallet_lines)):
+             if "Chia Wallet:" in chia_wallet_lines[i]:
+                 for j in range(i+1, len(chia_wallet_lines)):
+                     if chia_wallet_lines[j].startswith("   -Total Balance:"):
+                         chia_wallet_balance = chia_wallet_lines[j].split(":")[1].strip()
+                         break
+                     elif chia_wallet_lines[j].startswith("Pool wallet:"):
+                         break
+                 break
+    
+    except subprocess.CalledProcessError as e:
+     print(f"Error running command: {e}")
+     chia_wallet_balance = "Error"
+     send_email("Chia Farm Summary", html_output)
 
     # Format HTML output
     html_output = "<html><body style=\"font-family: Arial, sans-serif;\">"
@@ -95,17 +106,22 @@ def update_window():
 
             # Find Chia Wallet balance
             chia_wallet_balance = "N/A"
-            chia_wallet_output = subprocess.check_output("chia wallet show", shell=True).decode()
-            chia_wallet_lines = chia_wallet_output.split("\n")
-            for i in range(len(chia_wallet_lines)):
-                if "Chia Wallet:" in chia_wallet_lines[i]:
-                    for j in range(i+1, len(chia_wallet_lines)):
-                        if chia_wallet_lines[j].startswith("   -Total Balance:"):
-                            chia_wallet_balance = chia_wallet_lines[j].split(":")[1].strip()
-                            break
-                        elif chia_wallet_lines[j].startswith("Pool wallet:"):
-                            break
-                    break
+            try:
+             chia_wallet_output = subprocess.check_output("chia wallet show", shell=True).decode()
+             chia_wallet_lines = chia_wallet_output.split("\n")
+             for i in range(len(chia_wallet_lines)):
+                 if "Chia Wallet:" in chia_wallet_lines[i]:
+                     for j in range(i+1, len(chia_wallet_lines)):
+                         if chia_wallet_lines[j].startswith("   -Total Balance:"):
+                             chia_wallet_balance = chia_wallet_lines[j].split(":")[1].strip()
+                             break
+                         elif chia_wallet_lines[j].startswith("Pool wallet:"):
+                             break
+                     break
+            except subprocess.CalledProcessError as e:
+             print(f"Error running command: {e}")
+             chia_wallet_balance = "Error"
+             send_email("Chia Farm Summary", html_output)
 
             # Check if plot count has changed
             if plot_count != num_plots_value["text"]:
@@ -204,8 +220,9 @@ close_button = ttk.Button(window, text="Close", style='Custom.TButton', command=
 close_button.pack(pady=10)
 
 # Schedule task to update the farm summary window every 10 minutes
-schedule.every(10).minutes.do(update_window)
-
+schedule.every(refresh_delay_in_minutes).minutes.do(update_window)
+if send_a_control_email_every_n_hours > 0:
+ schedule.every(send_a_control_email_every_n_hours).hours.do(on_email_button_click)
 update_window()
 
 while running:
@@ -215,3 +232,4 @@ while running:
 
 
            
+
