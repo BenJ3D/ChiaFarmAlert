@@ -1,4 +1,5 @@
 import subprocess
+import platform
 import smtplib
 from email.mime.text import MIMEText
 import time
@@ -8,13 +9,31 @@ from tkinter import messagebox
 from tkinter import ttk
 import sys
 
-
 # Email information
-sender_email = "your-email@gmail.com"
+sender_email = "your-email@mail.com"
+sender_smtp = 'smtp.mail.com'
+sender_smtp_port = 587
+
 sender_password = "your-email-password"
 receiver_email = "recipient-email@gmail.com"
 
 # Function to send email
+
+# Déterminer la plateforme
+plat = platform.system()
+
+# Exécuter la commande appropriée en fonction de la plateforme
+if plat == 'Windows':
+    command1 = 'powershell chia wallet show'
+    command2 = 'powershell.exe chia farm summary'
+    vshell = True
+elif plat == 'Linux':
+    command1 = ['chia', 'wallet', 'show']
+    command2 = ['chia', 'farm', 'summary']
+    vshell = False
+else:
+    raise OSError('Plateforme non prise en charge')
+
 def send_email(subject, message):
     msg = MIMEText(message, 'html')
     msg['Subject'] = subject
@@ -22,7 +41,7 @@ def send_email(subject, message):
     msg['To'] = receiver_email
 
     try:
-        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server = smtplib.SMTP(sender_smtp, sender_smtp_port)
         server.starttls()
         server.login(sender_email, sender_password)
         server.sendmail(sender_email, receiver_email, msg.as_string())
@@ -43,7 +62,7 @@ def format_html_output(output):
 
     # Find Chia Wallet balance
     chia_wallet_balance = "N/A"
-    chia_wallet_output = subprocess.check_output("chia wallet show", shell=True).decode()
+    chia_wallet_output = subprocess.check_output(command1, shell=vshell).decode()
     chia_wallet_lines = chia_wallet_output.split("\n")
     for i in range(len(chia_wallet_lines)):
         if "Chia Wallet:" in chia_wallet_lines[i]:
@@ -70,7 +89,7 @@ def format_html_output(output):
 def update_window():
     try:
         # Run "Chia farm summary" command
-        output = subprocess.check_output("powershell.exe chia farm summary", shell=True).decode()
+        output = subprocess.check_output(command2, shell=vshell).decode()
 
         # Check if the command was successful
         if "No module named" in output:
@@ -95,7 +114,7 @@ def update_window():
 
             # Find Chia Wallet balance
             chia_wallet_balance = "N/A"
-            chia_wallet_output = subprocess.check_output("chia wallet show", shell=True).decode()
+            chia_wallet_output = subprocess.check_output(command1, shell=vshell).decode()
             chia_wallet_lines = chia_wallet_output.split("\n")
             for i in range(len(chia_wallet_lines)):
                 if "Chia Wallet:" in chia_wallet_lines[i]:
@@ -136,7 +155,7 @@ def update_window():
 def on_email_button_click():
     try:
         # Run "Chia farm summary" command
-        output = subprocess.check_output("powershell.exe chia farm summary", shell=True).decode()
+        output = subprocess.check_output(command2, shell=vshell).decode()
 
         # Check if the command was successful
         if "No module named" in output:
@@ -212,6 +231,3 @@ while running:
     window.update()
     schedule.run_pending()
     time.sleep(1)
-
-
-           
