@@ -13,8 +13,8 @@ import sys
 sender_email = "your-email@mail.com"
 sender_smtp = 'smtp.mail.com'
 sender_smtp_port = 587
-
 sender_password = "your-email-password"
+
 receiver_email = "recipient-email@gmail.com"
 
 # Function to send email
