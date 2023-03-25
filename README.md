@@ -30,7 +30,8 @@ The script also provides a graphical user interface (GUI) with the following but
 `Close`: This button closes the window and stops the script from running.
 
 Dependencies
-```Python 3```
+```Python3```
+```pip```
 ```tkinter```
 ```tkinter.messagebox```
 ```tkinter.ttk```
