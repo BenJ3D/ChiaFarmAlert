@@ -1,10 +1,12 @@
-<h1>Chia Farm Alert</h1>
+<h1>Chia Farm Alert - Windows/Ubuntu</h1>
 
 A Python 3 script to monitor your Chia farm and receive alerts via email when there are changes in the number of plots or wallet balance.
 
 The script will also run in the background and update the information every 10 minutes. If there are changes in the number of plots or wallet balance, an email will be sent to the recipient email address.
 
-/!\ As it is, it only works on Windows, I don't think there are many modifications to do for a Linux version.
+UPDATE 2023-03-25
+- Now is cross-plateform Windows-Linux(only tested on Ubuntu)
+- Add parameters for change smtp and port for use any email address
 
 Made with the help of chatGPT to iterate quickly !
 
@@ -36,7 +38,8 @@ The script also provides a graphical user interface (GUI) with the following but
 `Close`: This button closes the window and stops the script from running.
 
 Dependencies
-```Python 3```
+```Python3```
+```pip```
 ```tkinter```
 ```tkinter.messagebox```
 ```tkinter.ttk```
@@ -98,10 +101,13 @@ refresh_delay_in_minutes = 10               # The time in minutes when the scrip
 ```git clone git@github.com:BenJ3D/ChiaFarmAlert.git```
 
 2. Open the file `chia-farm-alert.py` in your favorite text editor.
-3. Update the email information at the beginning of the script with your own email, password, and recipient email address.
+3. Update the email information at the beginning of the script with your own email/smtp/port/password, and recipient email address.
 ```
-sender_email = "your-email@gmail.com"
+sender_email = "your-email@mail.com"
+sender_smtp = 'smtp.mail.com'
+sender_smtp_port = 587
 sender_password = "your-email-password"
+
 receiver_email = "recipient-email@gmail.com"
 ```
 
