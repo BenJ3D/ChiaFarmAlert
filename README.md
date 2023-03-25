@@ -135,8 +135,6 @@ For the moment, the script is rudimentary:
 
 -The GUI interface is very slow.
 
--It has happened to me that the program freezes, but this does not seem to occur when run as an administrator.
-
 When I have time, I will create a proper program with a user-friendly interface, compatible with both Linux and Windows.
 
 This script is provided as-is, and the author is not responsible for any damages or losses that may occur as a result of using this script. The script should be used at your own risk.
