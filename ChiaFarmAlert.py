@@ -208,7 +208,6 @@ window.protocol("WM_DELETE_WINDOW", close_window)
 num_plots_label = tk.Label(window, text="Number of plots: ")
 num_plots_label.pack()
 num_plots_value = tk.Label(window, text="N/A")
-1313
 num_plots_value.pack()
 
 wallet_balance_label = tk.Label(window, text="Wallet balance: ")
@@ -238,7 +237,7 @@ refresh_button.pack(pady=10)
 # Create the close button
 close_button = ttk.Button(window, text="Close", style='Custom.TButton', command=close_window)
 close_button.pack(pady=10)
-
+print("CHIA FARM ALERT V1 \n-- WELCOME --\nLaunching UI interface and sending initial emails, please wait a moment...\n(Don't close your terminal)")
 # Schedule task to update the farm summary window every 10 minutes
 schedule.every(refresh_delay_in_minutes).minutes.do(update_window)
 if send_a_control_email_every_n_hours > 0:
