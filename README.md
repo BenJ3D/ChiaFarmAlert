@@ -148,7 +148,8 @@ Under "System Variables", locate the "Path" variable and click "Edit".
 
 Click "New" and add the path to the directory containing the Chia program, for example:
 
-```C:\Program Files\Chia\resources\app.asar.unpacked\daemon```
+```C:\Users\YourLogin\AppData\Local\Programs\Chia\resources\app.asar.unpacked\daemon```
+
 
 Click "OK" to close all dialog boxes.
 
