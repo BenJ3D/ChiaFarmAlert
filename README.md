@@ -8,7 +8,7 @@ The script will also run in the background and update the information every 10 m
 ![image](https://user-images.githubusercontent.com/49345674/220518241-df778eb5-147d-4e5f-9987-6be632fe4d9c.png) ![image](https://user-images.githubusercontent.com/49345674/220518418-7282bfd5-86a2-42af-a778-56d9e01eeccb.png)
 
 <h2>UPDATE 2023-03-25</h2>
--Now is cross-plateform Windows-Linux(tested only on Ubuntu)
+-Now is cross-plateform Windows-Linux (tested only on Ubuntu)
 
 ![image](https://user-images.githubusercontent.com/49345674/227748658-41084b7a-19d5-4644-9375-9d8986dc63e5.png)
 
